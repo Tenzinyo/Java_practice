@@ -1,0 +1,15 @@
+public class Person{
+  private String name;
+  private int age;
+  public Person(int age, String name){
+    if(name==null){
+        throw new NullPointerException("Creating a person with null name");
+    }
+    this.name=name;
+    this.age=age;
+  }
+  public static void main(String[] agrs){
+    Person p1 = new Person(10, "Pema");
+    Person p2 = new Person(20, "Kai");
+  }
+}
