@@ -9,7 +9,11 @@ public class Person{
     this.age=age;
   }
   public static void main(String[] agrs){
-    Person p1 = new Person(10, "Pema");
-    Person p2 = new Person(20, "Kai");
+    try{
+    Person p1 = new Person(10, "Kai");
+    Person p2 = new Person(20, null);
+    } catch(NullPointerException e){
+        System.out.println("failed to create object");
+    }
   }
 }
