@@ -1,0 +1,14 @@
+public class QuadraticExpression {
+
+
+    public static double solveQuadraticExpression(double a, double b, double c){
+        double squareRoot = Math.pow(b,2)-(4*a*c);
+
+        if (squareRoot<0){
+
+        }
+        double numerator = (-1*b)-Math.sqrt(squareRoot);
+        double denominator = 2*a;
+        return numerator/denominator;
+    }
+}
