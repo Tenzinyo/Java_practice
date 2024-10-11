@@ -1,0 +1,47 @@
+import java.io.IOError;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Csv {
+    public static List<List<String >> readCsv(String filname) throws IOException,TooManyEntriesException{
+        String contents = Files.readString(Path.of(filname), StandardCharsets.US_ASCII);
+        String[] allRows = contents.split("\n");
+        String header = allRows[0];
+        String[] rows = Arrays.copyOfRange(allRows,1,allRows.length);
+        int headersize= header.split(",").length;
+
+        List<List<String >> result = new ArrayList<>();
+        for (String row:rows){
+            ArrayList<String> rowEntries = new ArrayList<>(); //create an arraylist
+            String[] splitByComa = row.split(",");
+            int rowNum=1;
+            for (String entry:splitByComa) {
+                if (entry.charAt(0)=='"' && entry.charAt(entry.length()-1)!='"'){
+                    throw new UnmatchedQuotesException(filname, rowNum);
+                }
+                rowEntries.add(entry);
+                if (rowEntries.size()>headersize){
+                    throw new TooManyEntriesException(filname, rowNum);
+                }
+                rowNum++;
+
+            }
+
+        }
+        return result;
+
+    }
+
+    public static void main(String[] args) {
+        try
+            {System.out.println(readCsv("test.csv"));
+            } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+}
