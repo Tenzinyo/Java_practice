@@ -1,0 +1,14 @@
+Public class variadicExample{
+  public static void main(String args[]){
+		System.out.println(concatenate(“Hello”,”People”));
+    }
+  
+  public static String concatenate(String strings){
+  	String string = “”;
+  	for (String s:string ){
+      string+= “ ”+s;
+  }
+  return string;
+
+  }
+}
