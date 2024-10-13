@@ -1,0 +1,12 @@
+public enum SuitCards{
+  SPADES(Color.BLACK);
+  CLUBS(Color.BLACK);
+  DIAMONDS(Color.RED);
+  HEARTS(Color.RED);
+
+  private Color color;
+  private SuitCards(Color color){
+    this.color = color;
+  }
+
+}
