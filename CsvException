@@ -1,0 +1,27 @@
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+public class CsvException extends Exception {
+  public CsvException(String filename, String reason) {
+    super("Error processing " + filename + (reason.length() > 0 ? ": " + reason : ""));
+    }
+  }
+  public class TooManyEntriesException extends CsvException {
+    public TooManyEntriesException(String filename, int row) {
+      super(filename, "too many entries in row " + row);
+    }
+  }
+  public class NotEnoughEntriesException extends CsvException {
+    public NotEnoughEntriesException(String filename, int row) {
+      super(filename, "not enough entries in row " + row);
+    }
+  }
+  public class UnmatchedQuoteException extends CsvException {
+    public UnmatchedQuoteException(String filename, int row) {
+      super(filename, "unmatched quote in row " + row);
+  }
+}
