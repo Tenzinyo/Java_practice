@@ -1,0 +1,9 @@
+public static String getSingleWords(ArrayList<String> strings) {
+  String output = "";
+  for (String s : strings) {
+    if (s.split(" ").length == 1) {
+      output += "," + s;
+    }
+  }
+  return output.substring(1);
+}
