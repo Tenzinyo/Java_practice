@@ -15,4 +15,7 @@ class BikeList<T> {
   public void addAll(Collection<T> collection){
     items.addAll(collection);
   }
+  public void remove(T item){
+    items.remove(item);
+  }
 }
