@@ -1,0 +1,51 @@
+import java.io.File;
+import java.util.Scanner;
+
+public class StoringMarks {
+    public static void main(String[] args){
+        Scanner scanner= new Scanner(System.in);
+        String fileName= scanner.nextLine();
+        scanner.nextLine();
+        int min= scanner.nextInt();
+        scanner.nextInt();
+        int max= scanner.nextInt();
+        scanner.nextLine();
+        int width= scanner.nextInt();
+        scanner.nextLine();
+        int[] marks= new int[max-min+1];
+        int total=0;
+
+        try(Scanner file= new Scanner(new File("text.txt"))){
+            file.nextLine();
+            while(file.hasNext()){
+                String line[] = file.nextLine().split(",");
+                int d = Integer.parseInt(line[1]);
+                marks[d-min]+=1;
+                total+=1;
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        for(int i=0;i<marks.length;i+=width){
+            int sum=0;
+            for (int j=0;j<marks.length;j++){
+                sum+=marks[i+j];
+            }
+            int percentage=(int)(100*(1.0*sum)/total);
+            String bar="";
+            if(percentage>0){
+                bar=String.format("%"+percentage +"s"+" ").replace(" ","=");
+            }
+            int lower= i+min;
+            int upper=lower+width-1;
+
+            System.out.format("%.03d-%.03d:%s", lower, upper , bar);
+
+        }
+
+
+    }
+
+}
