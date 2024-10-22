@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Survey {
+    public static void main(String[] args){
+        //Star wars trilogy favourites
+        final int OPTIONS=3;
+        final int ORIGINAL=0;
+        final int NEW=1;
+        final int OTHER=2;
+        Scanner scanner= new Scanner(System.in);
+        int[] result=new int[OPTIONS];
+        while(scanner.hasNextLine()){
+            int vote= scanner.nextInt();
+            result[vote]+=1;
+        }
+        System.out.print("Original: "+ result[ORIGINAL]);
+        System.out.print("New one: "+ result[NEW]);
+        System.out.print("The other one: "+ result[OTHER]);
+    }
+}
