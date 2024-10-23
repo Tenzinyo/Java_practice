@@ -1,0 +1,18 @@
+package Association;
+
+import java.util.ArrayList;
+
+public class Account {
+    private String name;
+    private int account_number;
+    private DebitCard debitCard;
+    private ArrayList<DebitCard> dc = new ArrayList<>();
+
+    public void addDebitCard(){
+        if(!dc.contains(debitCard)){
+            dc.add(debitCard);
+        }
+    }
+
+
+}
