@@ -1,0 +1,72 @@
+package FactoryMethod;
+
+import java.util.List;
+
+public abstract class Encryptor {
+    private SecretKey key;
+
+    public Encryptor(){
+        key=createKey();
+    }
+    public byte[] encryptor(List<String> lines){
+        int lengths=0;
+        for(String line:lines){
+            lengths+=line.length();
+        }
+        byte[] result=new byte[lengths];
+        int i=0;
+        for(String line:lines){
+            byte[] ct=key.encrypt(line.getBytes());
+            for(byte b:ct){
+                result[i++]=b;
+            }
+        }
+        return result;
+    }
+    public abstract SecretKey createKey();
+}
+
+class InsecureEncryptor extends Encryptor{
+//    private ShortSecretKey key;
+    @Override
+    public SecretKey createKey() {
+        return new ShortSecretKey();
+    }
+}
+
+import java.nio.charset.StandardCharsets;
+
+public abstract class SecretKey {
+    private byte[] key;
+    public SecretKey(int n){
+        key=new byte[n];
+    }
+    public byte[] encrypt(byte[] message){
+        int m=message.length;
+        int k = key.length;
+        int j =0;
+        byte[] result=new byte[m];
+        for(int i=0;i<m;i++){
+            result[i] =(byte) (message[i]^key[j]%key.length);
+            j+=1;
+            if(j==k){
+                j=0;
+            }
+        }
+        return result;
+    }
+    public String decrypt(byte[] message){
+        return new String(encrypt(message),StandardCharsets.UTF_8);
+    }
+
+}
+
+public class ShortSecretKey extends SecretKey{
+
+    private static final int MAX_LEN=16;
+    public ShortSecretKey(){
+        super(MAX_LEN);
+    }
+
+
+}
