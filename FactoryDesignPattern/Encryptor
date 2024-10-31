@@ -1,0 +1,27 @@
+package FactoryMethod;
+
+import java.util.List;
+
+public abstract class Encryptor {
+    private SecretKey key;
+
+    public Encryptor(){
+        key=createKey();
+    }
+    public byte[] encryptor(List<String> lines){
+        int lengths=0;
+        for(String line:lines){
+            lengths+=line.length();
+        }
+        byte[] result=new byte[lengths];
+        int i=0;
+        for(String line:lines){
+            byte[] ct=key.encrypt(line.getBytes());
+            for(byte b:ct){
+                result[i++]=b;
+            }
+        }
+        return result;
+    }
+    public abstract SecretKey createKey();
+}
