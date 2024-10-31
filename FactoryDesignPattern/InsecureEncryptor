@@ -1,0 +1,7 @@
+class InsecureEncryptor extends Encryptor{
+//    private ShortSecretKey key;
+    @Override
+    public SecretKey createKey() {
+        return new ShortSecretKey();
+    }
+}
