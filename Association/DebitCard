@@ -1,0 +1,13 @@
+package Association;
+
+public class DebitCard{
+    private Account account;
+    private boolean hasDebitCard;
+
+    public DebitCard(Account account){
+        this.account = account;
+    }
+    public boolean getDebitCard(){
+        return hasDebitCard;
+    }
+}
