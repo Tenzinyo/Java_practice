@@ -18,4 +18,5 @@ public class AuctionBid implements Comparable<AuctionBid> {
   }
   return amount - other.amount;
   }
+  //for
 }
