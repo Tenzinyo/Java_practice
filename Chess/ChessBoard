@@ -1,0 +1,25 @@
+package Chess;
+
+import java.util.HashMap;
+
+public class ChessBoard {
+    private HashMap<String,Piece> board=new HashMap<String,Piece>();
+
+    public void addPiece(Piece p){
+        board.put(p.getPiece(),p);
+
+    }
+    public <T extends Piece>T getPiece(String name){
+        return (T)board.get(name);
+    }
+
+    public static void main(String[] args){
+        ChessBoard cb= new ChessBoard();
+        Knight k = new Knight("whiteKnight1");
+        Rook r=new Rook("rook1");
+        cb.addPiece(r);
+        cb.addPiece(k);
+        k.methods();
+        Rook r2= cb.getPiece("rook2"); //generics
+    }
+}
