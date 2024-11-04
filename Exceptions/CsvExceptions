@@ -1,0 +1,9 @@
+package CSVExceptions;
+
+
+public class CsvExceptions extends Exception{
+    public CsvExceptions(String filename,String reason){
+        super("cant read CSV file"+filename + (reason.length()>0 ? ": " + reason : ""));
+    }
+
+}
