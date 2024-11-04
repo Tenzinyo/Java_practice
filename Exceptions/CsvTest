@@ -1,0 +1,48 @@
+package CSVExceptions;
+
+import org.junit.Test;
+import org.w3c.dom.css.CSSValue;
+
+import javax.swing.text.html.CSS;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static CSVExceptions.NotEnoughException.readCsv;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CsvTest {
+    @Test
+    public void testCase(){
+        List<List<String>> result=new ArrayList<>();
+        List<String> row1=new ArrayList<>();
+        row1.add("Alice");
+        row1.add("90");
+        List<String> row2=new ArrayList<>();
+        row2.add("Bob");
+        row2.add("65");
+        List<String> row3=new ArrayList<>();
+        row3.add("Carol");
+        row3.add("72");
+        result.add(row1);
+        result.add(row2);
+        result.add(row3);
+        try{
+            assertEquals(result,readCsv("src/CSVExceptions/valid.csv"));
+
+        }catch(IOException|CsvExceptions e){
+            e.printStackTrace();
+        }
+    }
+    public void testInput(){
+        assertThrows(NotEnoughException.class,()->{
+            readCsv("src/CSVExceptions/valid.csv");
+        });
+    }
+    public void testQuote(){
+        assertThrows(UnmatchedQuotationException.class,()->{
+            readCsv("src/CSVExceptions/valid.csv");
+        });
+    }
+
+}
