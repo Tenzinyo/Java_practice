@@ -1,0 +1,8 @@
+package CSVExceptions;
+
+public class TooManyEntriesException extends CsvExceptions{
+    public TooManyEntriesException(String filename, int row){
+        super(filename," too many entries in the row: "+ row);
+    }
+
+}
