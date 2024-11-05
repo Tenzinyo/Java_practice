@@ -1,0 +1,58 @@
+package CSVExceptions;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class NotEnoughException extends CsvExceptions{
+    public NotEnoughException(String filename, int row){
+        super(filename, "fewer entries in the row: "+row);
+    }
+    public static List<List<String>> readCsv(String filename)throws IOException,CsvExceptions{
+        List<List<String>> result=new ArrayList<>();
+        String contents= Files.readString(Path.of(filename), StandardCharsets.UTF_8);
+        String [] allRows = contents.split("\n");
+        String headRow=allRows[0];
+        String[] rows= Arrays.copyOfRange(allRows,1,allRows.length);
+        int rowNum=1;
+        int columnCount = filename.split(",").length;
+        for(String row:rows){
+            boolean inQuote=false;
+            List<String> parsedList=new ArrayList<>();
+            String soFar="";
+            row=row.trim();
+
+            for(int i=0;i<row.length();i++){
+                char at= row.charAt(i);
+                if(at=='"'){
+                    inQuote=!inQuote;
+                }
+                if (at == ',') {
+                    if(!inQuote){
+                        parsedList.add(soFar);
+                        soFar="";
+                    }else{
+                        soFar+=',';
+                    }
+
+                }else{
+                    soFar+=at;
+
+                }
+                }
+            parsedList.add(soFar);
+            if(inQuote){
+                throw   new UnmatchedQuotationException(filename,rowNum);
+            }
+            result.add(parsedList);
+            }
+
+        return result;
+
+        }
+    }
+
