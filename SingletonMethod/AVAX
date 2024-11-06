@@ -1,0 +1,18 @@
+package org.example;
+
+public class AVAX extends Currency {
+    private static AVAX instance;
+    private AVAX() {}
+
+    public static AVAX getInstance() {
+        if (instance == null) {
+            instance = new AVAX();
+        }
+        return instance;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+}
