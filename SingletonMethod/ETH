@@ -1,0 +1,13 @@
+package org.example;
+
+public class ETH extends Currency {
+    private static ETH instance;
+    private ETH() {}
+
+    public static ETH getInstance() {
+        if (instance == null) {
+            instance = new ETH();
+        }
+        return instance;
+    }
+}
