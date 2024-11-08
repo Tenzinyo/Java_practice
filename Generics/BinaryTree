@@ -1,0 +1,11 @@
+package Generics;
+
+public class BinaryTree<T> {
+    private final Nodes<T> root;
+
+    public BinaryTree(Nodes<T> root){
+        this.root=root;
+
+    }
+
+}
