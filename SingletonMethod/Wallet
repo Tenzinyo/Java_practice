@@ -1,0 +1,47 @@
+package org.example;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Wallet {
+    private HashMap<Currency, Double> balances = new HashMap<>();
+    private List<History> histories = new ArrayList<>();
+
+    public void deposit(Currency c, Double quantity) {
+        balances.put(c, balances.getOrDefault(c, 0.0) + quantity);
+        histories.add(new History(c, quantity, TransferType.DEPOSIT));
+    }
+
+    public void send(Currency c, Double quantity, Wallet targetWallet) {
+        double balance = balances.getOrDefault(c, 0.0) - quantity;
+
+        if (balance < 0.0)  {
+            throw new RuntimeException("Insufficient balance");
+        }
+
+        balances.put(c, balance);
+        histories.add(new History(c, quantity, TransferType.SEND));
+
+        targetWallet.deposit(c, quantity);
+    }
+
+    /**
+     * To make it work, need to add a few toString methods
+     */
+    public void printBalance() {
+        for (Map.Entry<Currency, Double> entry : balances.entrySet()) {
+
+        }
+    }
+
+    /**
+     * To make it work, need to add a few toString methods
+     */
+    public void printHistory() {
+         for (History history : histories) {
+
+         }
+    }
+}
