@@ -1,0 +1,62 @@
+package CSVExceptions;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class UnmatchedQuotationException extends CsvExceptions{
+    public UnmatchedQuotationException(String filename, int row){
+        super(filename, "unmatched quotation in row: "+ row);
+    }
+    public static List<List<String>> readCsv(String filename) throws IOException, CsvExceptions{
+        List<List<String>> s = new ArrayList<>();
+        String contents = Files.readString(Path.of(filename), StandardCharsets.UTF_8);
+        String[] allRows=contents.split("\n");
+        String header=allRows[0];
+        String[] rows= Arrays.copyOfRange(allRows,1,allRows.length);
+        int columnCount = header.split(",").length;
+        int rowNum=1;
+
+        for(String row:rows){
+            boolean inQuote=false;
+            List<String> parsedRow = new ArrayList<>();
+            String soFar="";
+            row=row.trim();
+
+            for(int i=0;i<row.length();i++){
+                char at=row.charAt(i);
+                if(at=='"'){
+                    inQuote=!inQuote;
+                }if(at==','){
+                    if(!inQuote){
+                        parsedRow.add(soFar);
+                        soFar="";
+                    }else{
+                        soFar+=",";
+                    }
+                }else{
+                    soFar+=at;
+                }
+            }
+            parsedRow.add(soFar);
+            if(inQuote){
+                throw new UnmatchedQuotationException(filename,rowNum);
+            }
+            if(parsedRow.size()<columnCount){
+                throw new NotEnoughException(filename,rowNum);
+            }
+            if(parsedRow.size()>columnCount){
+                throw new TooManyEntriesException(filename,rowNum);
+            }
+            s.add(parsedRow);
+        }
+        return s;
+
+    }
+}
