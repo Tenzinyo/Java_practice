@@ -1,0 +1,18 @@
+package Generics;
+
+
+public class Nodes<T> {
+    private final T value;
+
+    private final Nodes<T> left,right;
+
+    public Nodes(T value, Nodes<T> left, Nodes<T> right){
+        this.value=value;
+        this.left=left;
+        this.right=right;
+    }
+
+
+
+
+}
