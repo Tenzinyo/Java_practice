@@ -1,0 +1,28 @@
+package Enum;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Card {
+    Rank rank;
+    Suit suit;
+    Color color;
+
+    public Card(Rank rank, Suit suit, Color color){
+        this.rank=rank;
+        this.suit=suit;
+        this.color=color;
+    }
+
+    public static void main(String[]args){
+        ArrayList<Rank> ranks= new ArrayList<>();
+        ranks.add(Rank.TEN);
+        ranks.add(Rank.ACE);
+        ranks.add(Rank.FOUR);
+        ranks.add(Rank.KING);
+        ranks.add(Rank.QUEEN);
+
+        Collections.sort(ranks);
+
+    }
+}
