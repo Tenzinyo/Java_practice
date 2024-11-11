@@ -1,0 +1,14 @@
+package Enum;
+
+public enum Suit {
+    SPADES(Color.BLACK),
+    ACES(Color.RED),
+    DIAMOND(Color.BLACK),
+    HEARTS(Color.RED);
+
+    private Color color;
+
+    private Suit(Color color){
+       this.color=color;
+    }
+}
