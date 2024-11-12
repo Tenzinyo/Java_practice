@@ -1,0 +1,29 @@
+package Etacolla;
+
+import Interface.Student;
+
+import javax.security.auth.Subject;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Etacolla {
+    private final UniService universityService;
+    private Student student;
+    public Etacolla(UniService service) {
+        this.universityService = service;
+
+    }
+    public void generateTimetable(Student student) {
+        List<String> subjectNames = universityService.getEnrolledSubjectCode("apple");
+        List<Subject> subjects = new ArrayList<>();
+        for (String subjectName : subjectNames) {
+            Subject subject = universityService.getSubject(subjectName);
+            subjects.add(subject);
+        }
+// allocate activities to student ...
+//        List<Activity> allocated = allocatePreferences(student.preferences, subjects);
+//        for (Activity activity : allocated) {
+//            universityService.registerStudentInActivity(student, activity);
+//        }
+    }
+}
