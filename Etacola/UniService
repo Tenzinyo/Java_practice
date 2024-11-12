@@ -1,0 +1,12 @@
+package Etacolla;
+
+import School.Student;
+
+import javax.security.auth.Subject;
+import java.util.List;
+
+public interface UniService {
+    List<String> getEnrolledSubjectCode(String student);
+    Subject getSubject(String name);
+    void registerStudent(Student student);
+}
