@@ -1,0 +1,14 @@
+package Httprequest;
+
+public abstract class Request {
+    public String address;
+    public String file;
+
+    public Request(String address,String file){
+        this.address=address;
+        this.file=file;
+    }
+
+    public abstract String getFullRequest();
+    public abstract short getPort();
+}
