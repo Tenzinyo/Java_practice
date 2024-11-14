@@ -1,0 +1,25 @@
+package Comparable;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Student implements Comparable<Student>{
+    public final String name;
+    public final int number;
+
+    public Student(String name, int number) {
+        this.name = name;
+        this.number = number;
+    }
+
+    public int compareTo(Student other){
+        if(name.compareTo(other.name)<0){
+            return -1;
+        }if(name.compareTo(other.name)>0){
+            return 1;
+        }return number-other.number;
+    }
+    
+
+
+}
