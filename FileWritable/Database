@@ -1,0 +1,48 @@
+package FileWritable;
+
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Database {
+    private static final int MAX_FILE=100;
+    private FileWritable[] list = new FileWritable[MAX_FILE];
+    public Database(){
+
+    }
+    public void addDatabase(FileWritable row){
+        for(int i=0;i<list.length;i++){
+            if(list[i]!=null){
+                list[i++]=row;
+                break;
+            }
+        }
+    }
+    public void removeDatabase(FileWritable row){
+        for(int i=0;i<list.length;i++){
+            if(row.equals(list[i])){
+                list[i]=null;
+            }
+        }
+
+    }
+    public void writeAll(String filename){
+        try(BufferedWriter bw=new BufferedWriter(new FileWriter("text.txt"))){
+            for (FileWritable row:list){
+                if(row!=null){
+                    row.writeToFile(bw);
+                }
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args){
+        Database database=new Database();
+        database.addDatabase(new Student("apple",123));
+        database.writeAll("text.txt");
+    }
+
+}
