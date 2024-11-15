@@ -1,0 +1,22 @@
+package FileWritable;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+
+public class Car implements FileWritable{
+    private String model;
+    private String colour;
+    public Car(String model, String colour){
+        this.model=model;
+        this.colour=colour;
+    }
+
+    public void writeToFile(BufferedWriter writer)throws IOException {
+        String result=String.format("%f,%f",model,colour);
+        writer.write(result,0,result.length());
+        writer.newLine();
+
+    }
+
+
+}
