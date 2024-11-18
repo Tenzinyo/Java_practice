@@ -28,6 +28,7 @@ public class Database {
 
     }
     public void writeAll(String filename){
+        //try(BufferedReader br=new BufferedReader(new FileReader("text.txt"))){
         try(BufferedWriter bw=new BufferedWriter(new FileWriter("text.txt"))){
             for (FileWritable row:list){
                 if(row!=null){
