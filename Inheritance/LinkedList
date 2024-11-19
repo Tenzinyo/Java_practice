@@ -68,7 +68,27 @@ public class LinkedList {
                     --length;
                 }
             }
-        }
+        }else{
+                int currentIndex=0;
+                Node current=root;
+                Node prev= current;
+                while(current!=null&& currentIndex<n){
+                    prev=current;
+                    current=current.getNext();
+                    ++currentIndex;
+                }if(currentIndex==n){
+                    --length;
+                    if(current!=null){
+                        Node next= current.getNext();
+                        prev.setNext(next);
+                        if(next!=null){
+                            next.setPrev(prev);
+                        }
+                    }else{
+                        prev.setNext(null);
+                    }
+                }
+            }
 
     }
 
