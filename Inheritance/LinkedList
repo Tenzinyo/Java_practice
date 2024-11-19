@@ -1,0 +1,77 @@
+package Inheritence;
+
+public class LinkedList {
+    private Node root;
+    private int length;
+
+    public Node getRoot(){
+        return root;
+    }
+    public int getLength(){
+        return length;
+    }
+    public void append(int value){
+        if(root==null){
+            length++;
+            root=new Node(value);
+        }else{
+            length++;
+            Node current=root;
+            while(current.getNext()!=null){
+                current=current.getNext();
+            }
+            Node next=new Node(value);
+            current.setNext(next);
+            next.setPrev(current);
+
+        }
+    }
+    public void insert(int index,int value){
+        if(index==0){
+            length++;
+            Node node=new Node(value);
+            if(root!=null){
+                root.setNext(node);
+                node.setPrev(root);
+            }
+            root=node;
+        }else{
+            int currentIndex=0;
+            Node current=root;
+            Node prev=current;
+            while (current!=null& currentIndex<index){
+                prev=current;
+                current=current.getNext();
+                currentIndex++;
+            }
+            if(currentIndex==index){
+                length++;
+                Node node=new Node(value);
+                prev.setNext(node);
+                if(current!=null){
+                    current.setPrev(node);
+
+                }
+                node.setPrev(prev);
+                node.setNext(current);
+
+                }
+            }
+        }
+        public void remove(int n){
+            if(n==0){
+                if(root!=null){
+                    root.getNext();
+                    if(root!=null){
+                        root.setPrev(null);
+                    }
+                    --length;
+                }
+            }
+        }
+
+    }
+
+
+
+}
