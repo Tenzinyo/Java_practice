@@ -1,0 +1,17 @@
+package Interface;
+
+import java.util.ArrayList;
+
+public class Course implements Enrollable<Student>{
+    public String courseName;
+    public ArrayList<Student> students= new ArrayList<>();
+    public boolean enroll(Student student){
+        if(!students.contains(student)){
+            students.add(student);
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+}
