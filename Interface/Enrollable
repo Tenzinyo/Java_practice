@@ -1,0 +1,5 @@
+package Interface;
+
+interface Enrollable<T> {
+    boolean enroll(T item);
+}
