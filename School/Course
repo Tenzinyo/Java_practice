@@ -1,0 +1,28 @@
+package School;
+
+import java.util.ArrayList;
+
+public class Course {
+    private String course_name;
+    private final int POPULATION=400;
+    private ArrayList<Student> students = new ArrayList<>();
+    public Course(){
+        this.course_name =course_name;
+        this.students=students;
+
+
+    }
+    public boolean enrollStudent(Student student){
+        if(students.size()<POPULATION && students.contains(course_name)){
+            students.add(student);
+            student.addCourse(this);
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+    public String getCourseName(){
+        return course_name;
+    }
+}
