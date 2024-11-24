@@ -28,9 +28,25 @@ public class Network {
             }
         }
     }
+    public Show[] getShow(int hrs,int mins){
+        Show[] shows= new Show[MAX_CHANNELS];
+        int index=0;
+        for(int i=0;i<numChannels;i++){
+            Show show=channels[i].getShow(hrs,mins);
+            if (show!=null){
+                shows[index++]=show;
+            }
+        }
+        return shows;
+    }
 
-    
-    
-
+    public Channel lookUp(Show show){
+        for (int i=0;i<numChannels;i++){
+            if(channels[i].hasShow(show)){
+                return channels[i];
+            }
+        }
+        return null;
+    }
 
 }
