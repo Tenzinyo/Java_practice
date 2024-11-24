@@ -16,6 +16,20 @@ public class Network {
             channels[numChannels++]=channel;
         }
     }
+    public void removeChannel(Channel channel){
+        for(int i=0;i<numChannels;i++){
+            if(channels[i].getChannelName().equals(channel.getChannelName())){
+                for(int j=i+1;j<numChannels;++j){
+                    channels[j-1]=channels[j];
+                }
+                numChannels--;
+                channels[numChannels]=null;
+                return;
+            }
+        }
+    }
+
+    
     
 
 
