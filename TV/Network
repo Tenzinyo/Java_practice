@@ -1,0 +1,22 @@
+package TV;
+
+public class Network {
+    private String name;
+    private static final int MAX_CHANNELS =3;
+    private Channel[] channels= new Channel[MAX_CHANNELS];
+    private int numChannels=0;
+
+
+    public Network(String name){
+        this.name=name;
+    }
+
+    public void addChannel(Channel channel){
+        if(numChannels<MAX_CHANNELS){
+            channels[numChannels++]=channel;
+        }
+    }
+    
+
+
+}
