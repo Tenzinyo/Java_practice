@@ -26,6 +26,23 @@ public class Channel {
             shows[numShows++]=show;
         }
     }
+    public Show getShow(int hrs,int mins){
+        Show show=new Show("",30,hrs,mins);
+        for(int i =0;i<numShows;i++){
+            if(shows[i].overlap(show)){
+                return shows[i];
+            }
+        }
+        return null;
+    }
+    public boolean hasShow(Show show){
+        for(int i=0;i<numShows;i++){
+            if(shows[i].getShow().equals(show.getShow())){
+                return true;
+            }
+        }
+        return false;
+    }
 
     
 
