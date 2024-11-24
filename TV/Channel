@@ -1,0 +1,32 @@
+package TV;
+
+public class Channel {
+    private String name;
+    private static final int MAX_BROADCAST=5;
+    private String [] broadcastList;
+    private boolean isRepeating;
+    private final Show[] shows= new Show[MAX_BROADCAST];
+    private int numShows=0;
+
+    public Channel(String name){
+        this.name=name;
+    }
+
+    public String getChannelName(){
+        return name;
+    }
+
+    public void addShow(Show show){
+        if (numShows<MAX_BROADCAST){
+            for(int i=0;i<numShows;i++){
+                if(show.overlap(shows[i])){
+                    return;
+                }
+            }
+            shows[numShows++]=show;
+        }
+    }
+
+    
+
+}
