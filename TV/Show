@@ -1,0 +1,30 @@
+package TV;
+public class Show{
+  private String name;
+  private int duration;
+  private int startTimeMin;
+  public Show(String name, int duration, int airtimeMins,int aritimeHrs){
+    this.name = name;
+    this.duration=duration;
+    this.startTimeMin=airtimeMins*60*aritimeHrs;
+    
+  }
+  public String getShowName(){
+    return name;
+  }
+  public int getDuration(){
+    return duration;
+  }
+  public int getStartTime(){
+    return startTimeMin;
+  }
+  public int getAirtimeMins(){
+    return startTimeMin%60;
+  }
+  public int getAirtimeHrs(){
+    return startTimeMin/60;
+  }
+  public boolean overlap(Show other){
+    return (startTimeHrs>=other.startTimeHrs && startTimeMins<other.startTimeMins + other.duration||startTimeMin<=other.startTimeMin && startTimeMin+duration>other.startTimeMin )
+  }
+}
