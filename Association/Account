@@ -9,10 +9,15 @@ public class Account {
 
     public void addDebitCard(){
 //        if(!dc.contains(debitCard)){
-//            dc.add(debitCard);
-//        }
+//            dc.add(debitCard);}
         dc.add(new DebitCard(this));
     }
+    public void addInfo(){
+        if(!dc.contains(name)){
+            dc.add(name);}
+
+    }
+
 
 
 }
