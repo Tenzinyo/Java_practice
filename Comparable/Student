@@ -26,7 +26,6 @@ public static void main(String[] args) {
                 new Student("Bob", 832572),
                 new Student("Bob", 632564)
         };
-        System.out.println(Arrays.toString(students));
         Arrays.sort(students);
         System.out.println(Arrays.toString(students));
     }
@@ -36,7 +35,6 @@ public static void main(String[] args) {
         double sum=0;
         for(Integer i:num){
             sum+=i;
-
         }
         avg = sum/num.size();
         return avg;
