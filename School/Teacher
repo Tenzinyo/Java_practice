@@ -1,3 +1,35 @@
-public class Teacher extends School{
+public class Teacher{
+  package School;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Student {
+    private String name;
+    private List<Course> courses = new ArrayList<>();
+    private final int MAX_STUDENT=10;
+    public Teacher(){
+        this.name=name;
+        this.courses=courses;
+    }
+    public void addStudent(Student student){
+        courses.add(student);
+
+   }
+    
+    public boolean addStudent(Student student){
+        if(courses.size()<MAX_STUDENT && !courses.contains(student)){
+            courses.add(student);
+            //course.enrollStudent(this);
+            return true;
+
+        }else{
+            return false;
+        }
+
+
+    }
+
+}
 
 }
