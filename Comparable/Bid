@@ -1,18 +1,18 @@
 package Comparable;
 
-public class AuctionBid implements Comparable<AuctionBid>{
-    public final String name;
+public class Bid implements Comparable<Bid>{
+    public final String personName;
     public final String itemName;
     public final int amount;
 
-    public AuctionBid(String name, String itemName, int amount) {
-        this.name = name;
+    public Bid(String personName, String itemName, int amount) {
+        this.personName = personName;
         this.itemName = itemName;
         this.amount = amount;
     }
 
-    public int compareTo(AuctionBid other){
-        int result=name.compareTo(other.name);
+    public int compareTo(Bid other){
+        int result=personName.compareTo(other.personName);
         if(result!=0){
             return result;
         }
