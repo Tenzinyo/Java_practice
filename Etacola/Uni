@@ -6,7 +6,7 @@ import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Etacolla {
+public class Uni {
     private final UniService universityService;
     private Student student;
     public Etacolla(UniService service) {
