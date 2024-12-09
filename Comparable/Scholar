@@ -3,16 +3,16 @@ package Comparable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Student implements Comparable<Student>{
+public class Scholar implements Comparable<Scholar>{
     public final String name;
     public final int number;
 
-    public Student(String name, int number) {
+    public Scholar(String name, int number) {
         this.name = name;
         this.number = number;
     }
 
-    public int compareTo(Student other){
+    public int compareTo(Scholar other){
         if(name.compareTo(other.name)<0){
             return -1;
         }if(name.compareTo(other.name)>0){
@@ -20,14 +20,13 @@ public class Student implements Comparable<Student>{
         }return number-other.number;
     }
 public static void main(String[] args) {
-        Student[] students = new Student[] {
-                new Student("Alice", 753285),
-                new Student("Charlie", 913571),
-                new Student("Bob", 832572),
-                new Student("Bob", 632564)
+        Scholar[] scholars = new Scholar[] {
+                new Scholar("Tenzin", 123456),
+                new Scholar("Pema", 234567),
+                new Scholar("Jigme", 3456789),
+                new Scholar("Samten", 5678910)
         };
-        Arrays.sort(students);
-        System.out.println(Arrays.toString(students));
+        Arrays.sort(scholars);
     }
 
     public static double average(ArrayList<Integer> num){
