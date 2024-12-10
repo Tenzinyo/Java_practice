@@ -1,14 +1,14 @@
-public class AuctionBid implements Comparable<AuctionBid> {
-  public final String name;
+public class Bid implements Comparable<Bid> {
+  public final String payerName;
   public final String itemName;
   public final int amount;
-  public AuctionBid(String name, String itemName, int amount) {
-    this.name = name;
+  public AuctionBid(String payerName, String itemName, int amount) {
+    this.payerName = payerName;
     this.itemName = itemName;
     this.amount = amount;
   }
-  public int compareTo(AuctionBid other) {
-    int result = name.compareTo(other.name);
+  public int compareTo(Bid other) {
+    int result = payerName.compareTo(other.payerName);
     if (result != 0) {
     return result;
   }
