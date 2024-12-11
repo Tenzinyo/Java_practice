@@ -2,7 +2,7 @@ public class Immutable {
     private final double centreX, centreY, radius;
     private static int numCircles;
 
-    public ImmutableCircle(double newCentreX, double newCentreY, double newRadius) {
+    public Immutable(double newCentreX, double newCentreY, double newRadius) {
         centreX = newCentreX;
         centreY = newCentreY;
         radius = newRadius;
@@ -32,6 +32,25 @@ public class Immutable {
     public static void printNumCircles() {
         System.out.println("Number of circles = " + numCircles);
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ImmutableCircle circle = (ImmutableCircle) o;
+        return Double.compare(circle.centreX, centreX) == 0 &&
+                Double.compare(circle.centreY, centreY) == 0 &&
+                Double.compare(circle.radius, radius) == 0;
+    }
+
+    @Override
+    public String toString() {
+        return "I am a Circle with {" +
+                "centreX=" + centreX +
+                ", centreY=" + centreY +
+                ", radius=" + radius +
+                '}';
+    }
+
 
     
 
