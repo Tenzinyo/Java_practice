@@ -28,10 +28,6 @@ public class Immutable {
         return area;
     }
 
-    // Static method to count the number of circles
-    public static void printNumCircles() {
-        System.out.println("Number of circles = " + numCircles);
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,7 +40,7 @@ public class Immutable {
 
     @Override
     public String toString() {
-        return "I am a Circle with {" +
+        return "Circle: {" +
                 "centreX=" + centreX +
                 ", centreY=" + centreY +
                 ", radius=" + radius +
