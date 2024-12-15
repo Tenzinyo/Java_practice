@@ -1,0 +1,16 @@
+public abstract class Keys {
+           private final byte[] key;
+           public Keys(int n) {
+               key = new byte[n];
+               Random rand = new Random();
+               rand.nextBytes(key);
+}
+           public byte[] encrypt(byte[] message) {
+               // Uses the modulo operation instead to make it neater
+               byte[] result = new byte[message.length];
+               for (int i = 0; i < message.length; ++i) {
+                   result[i] = (byte) (message[i] ^ key[i % key.length]);
+               }
+               return result;
+
+}
