@@ -4,7 +4,7 @@ public abstract class Keys {
                key = new byte[n];
                Random rand = new Random();
                rand.nextBytes(key);
-}
+           }
            public byte[] encrypt(byte[] message) {
                // Uses the modulo operation instead to make it neater
                byte[] result = new byte[message.length];
@@ -12,5 +12,11 @@ public abstract class Keys {
                    result[i] = (byte) (message[i] ^ key[i % key.length]);
                }
                return result;
-
+           }
+public String decrypt(byte[] message) {
+               return new String(encrypt(message), StandardCharsets.UTF_8);
+                      } 
+           }
+       
+           
 }
