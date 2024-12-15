@@ -17,6 +17,13 @@ public String decrypt(byte[] message) {
                return new String(encrypt(message), StandardCharsets.UTF_8);
                       } 
            }
+public class ShortKey extends Keys {
+           public ShortKey() {
+super(16); }
+           }
+       public class LongKey extends Keys {
+           public LongKey() {
+super(32); 
        
            
 }
